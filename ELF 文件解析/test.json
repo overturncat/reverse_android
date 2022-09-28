@@ -1,0 +1,13 @@
+enp4s0f1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 80:fa:5b:80:19:0f  txqueuelen 1000  (以太网)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp4s0f1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 80:fa:5b:80:19:0f  txqueuelen 1000  (以太网)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0

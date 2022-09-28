@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+    <!--1. 添加Application节点:ProxyApplication, 该节点用于加载源apk-->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".DummyApplication"
+        android:theme="@style/Theme.MyApplication">
+        <!-- 2. 把源apk的Application节点 保存到 meta-data节点中, 用于在上一步的Application节点中手动调用 -->
+        <meta-data android:name="APPLICATION_CLASS_NAME" android:value="com.example.myapplication.MyApplication"/>
+        <!-- 3. 注释原本自己的.MainActivity， 注册源apk的MainActivity (因为在加载了源apk的dex文件之后，就可以直接索引到源apk中的MainActivity了) -->
+        <activity
+            android:name=".Main2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
