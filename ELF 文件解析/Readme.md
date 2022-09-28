@@ -1,15 +1,3 @@
----
-typora-copy-images-to: ./images2
-typora-root-url: ./
----
-
-
-
-
-
-
-
-
 
 # ELF 文件格式分析
 
@@ -55,7 +43,7 @@ aosp 源码： https://github.com/aosp-mirror/platform_bionic/tree/donut-release
 
 ELF文件 有两种视角可供选择，一种是链接视角，通过节（Section）来进行划分；另一种是运行视角，通过段（Segment）来进行划分。
 
-![image-20220724161650543](/images/image-20220724161650543.png)
+![image-20220724161650543](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220724161650543.png)
 
 * ELF 文件头 (ELF header)
 
@@ -104,12 +92,12 @@ typedef struct
 | 字段            | 值                                                           |
 | --------------- | ------------------------------------------------------------ |
 | **e_ident[16]** | ELF 标识，16字节数组，它的各个索引位置的字节数据有固定的含义。 |
-| * EI_MAG[4]     | 魔数，用于标识这是一个 ELF 文件。这四个字节存放的内容是固定的<br />![image-20220724220532596](/images/image-20220724220532596.png)<br />值得注意的是文件头部存在魔术字符（7f 45 4c 46），即字符串“\177ELF”，当文件被映射到内存时，可以通过搜索该字符确定映射地址，这在dump内存时非常有用。 |
-| * EI_CLASS      | 指明文件的类型(适应于多种字长大小的系统)<br />![image-20220724220648119](/images/image-20220724220648119.png) |
-| * EI_DATA       | 指明了目标文件中的数据编码格式(一般为小端)<br />![image-20220724220907051](/images/image-20220724220907051.png) |
+| * EI_MAG[4]     | 魔数，用于标识这是一个 ELF 文件。这四个字节存放的内容是固定的<br />![image-20220724220532596](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220724220532596.png)<br />值得注意的是文件头部存在魔术字符（7f 45 4c 46)，即字符串“\177ELF”，当文件被映射到内存时，可以通过搜索该字符确定映射地址，这在dump内存时非常有用。 |
+| * EI_CLASS      | 指明文件的类型(适应于多种字长大小的系统)<br />![image-20220724220648119](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220724220648119.png) |
+| * EI_DATA       | 指明了目标文件中的数据编码格式(一般为小端)<br />![image-20220724220907051](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220724220907051.png) |
 | * EI_VERSION    | 指明 ELF 文件头的版本                                        |
 | * EI_PAD[9]     | 不使用                                                       |
-| **e_type**      | 目标文件类型<br />![image-20220724222506015](/images/image-20220724222506015.png) |
+| **e_type**      | 目标文件类型<br />![image-20220724222506015](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220724222506015.png) |
 | e_machine       | 指定该文件适用的处理器体系结构<br />名字			值			意义<br/>EM_NONE		0			未知体系结构<br/>EM_X86_64 	0x3E(62)	X86-64 |
 | e_version       | 此字段指明目标文件的版本                                     |
 | **e_entry**     | 此字段指明程序入口的虚拟地址。即当文件被加载到进程空间里后，入口程序在进程地址空间里的地址。对于可执行程序文件来说，当 ELF 文件完成加载之后，程序将从这里开始运行；而对于其它文件来说，这个值应该是 0。 |
@@ -127,7 +115,7 @@ typedef struct
 
 使用代码查看信息
 
-![image-20220924140703282](/images/image-20220924140703282.png)
+![image-20220924140703282](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924140703282.png)
 
 
 
@@ -222,7 +210,7 @@ typedef struct
 
 代码解析如下：
 
-![image-20220924141447338](/images/image-20220924141447338.png)
+![image-20220924141447338](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924141447338.png)
 
 
 
@@ -371,7 +359,7 @@ typedef struct
 
 代码解析结果如下：
 
-![image-20220924141948525](/images/image-20220924141948525.png)
+![image-20220924141948525](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924141948525.png)
 
 
 
@@ -419,7 +407,7 @@ typedef struct {
 | p_paddr  | 描述了物理地址相关，在应用层无作用。                         |
 | p_filesz | 数据成员给出本段内容在文件中的大小，单位是字节，可以是 0。p_offset描述了段在文件中的偏移。 |
 | p_memsz  | 此数据成员给出本段内容在内容镜像中的大小，单位是字节，可以是 0 |
-| p_flags  | 此成员描述了段的标志<br />![image-20220727135220543](/images/image-20220727135220543.png) |
+| p_flags  | 此成员描述了段的标志<br />![image-20220727135220543](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220727135220543.png) |
 | p_align  | 描述了对齐。对于可加载的段 p_vaddr和p_offset取值必须是合适的。此成员给出了段在文件中和内存中如何对齐。数值 0 1 标识不需要对齐。否则就必须是2的倍数。 p_vaddr和p_offset在取模后应该相等。 |
 
 * p_type 此数据成员说明了本程序头所描述的段的类型，或者如何解析本程序头的信息。
@@ -442,7 +430,7 @@ typedef struct {
 
 代码分析结果如下
 
-![image-20220924142312327](/images/image-20220924142312327.png)
+![image-20220924142312327](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924142312327.png)
 
 
 
@@ -484,7 +472,7 @@ typedef struct {
 
 ELF 文件的动态加载由 /system/bin/linker(旧版) ld.so(新版) 加载， 该加载器由段表[1]指定
 
-![image-20220922170122204](/images/image-20220922170122204.png)
+![image-20220922170122204](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220922170122204.png)
 
 /system/bin/linker 主要功能为
 
@@ -502,13 +490,13 @@ ELF 文件的动态加载由 /system/bin/linker(旧版) ld.so(新版) 加载， 
 
 linker 将类型为PT_LOAD的programe通过map映射到内存中, 如下所示
 
-![image-20220924163228896](/images/image-20220924163228896.png)
+![image-20220924163228896](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924163228896.png)
 
 很明显这两个段， 一个是可执行的代码段， 一个是可写的数据段
 
 以可执行文件(ls)为例， 映射到内存中，如下所示, 两个段被映射到了4个部分
 
-![image-20220924213522116](/images/image-20220924213522116.png)
+![image-20220924213522116](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220924213522116.png)
 
 其中 `acec9000-acf0b000` 是代码段， `acf0c000-acf13000` 整个部分是数据段
 
@@ -567,7 +555,7 @@ acf0f000-acf13000 rw-p 00000000 00:00 0 						 大小： 40 00
 
 
 
-![image-20220926105402111](/images/image-20220926105402111.png)
+![image-20220926105402111](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926105402111.png)
 
 
 
@@ -579,7 +567,7 @@ acf0f000-acf13000 rw-p 00000000 00:00 0 						 大小： 40 00
 
 解析 programe[Dynamic Segment] 动态段， 指定了动态链接过程中所需要的各种信息。 
 
-![image-20220926102625271](/images/image-20220926102625271.png)
+![image-20220926102625271](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926102625271.png)
 
 每8个字节为一项 { 类型， value}
 
@@ -630,7 +618,7 @@ extern Elf32_Dyn _DYNAMIC[];
 
 代码解析如下： 
 
-![image-20220926102933408](/images/image-20220926102933408.png)
+![image-20220926102933408](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926102933408.png)
 
 
 
@@ -638,13 +626,13 @@ extern Elf32_Dyn _DYNAMIC[];
 
 解析 字符串表(d_tag=5 DT_STRTAB, d_value 为 内存偏移 )
 
-![image-20220926104900747](/images/image-20220926104900747.png)
+![image-20220926104900747](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926104900747.png)
 
 内存偏移1A20, 在第一个段内，所以文件偏移也是1A20
 
-![image-20220926105402111](/images/image-20220926105402111.png)
+![image-20220926105402111](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926105402111.png)
 
-![image-20220926110113858](/images/image-20220926110113858.png)
+![image-20220926110113858](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926110113858.png)
 
 关键代码解析如下：
 
@@ -693,7 +681,7 @@ while (true){
     }
 ```
 
-![image-20220926150103786](/images/image-20220926150103786.png)
+![image-20220926150103786](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926150103786.png)
 
 
 
@@ -705,7 +693,7 @@ while (true){
 
 解析 导入库表(d_tag=1 DT_NEEDED,  d_value 为相对字符串表DT_STRAB的offset) 
 
-![image-20220926150542559](/images/image-20220926150542559.png)
+![image-20220926150542559](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926150542559.png)
 
 d_value是相对字符串表DT_STRAB的内存偏移， 也都在第一个段内，所以文件偏移与内存偏移一致
 
@@ -725,7 +713,7 @@ d_value是相对字符串表DT_STRAB的内存偏移， 也都在第一个段内�
         }
 ```
 
-![image-20220926160655084](/images/image-20220926160655084.png)
+![image-20220926160655084](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926160655084.png)
 
 
 
@@ -741,7 +729,7 @@ d_value是相对字符串表DT_STRAB的内存偏移， 也都在第一个段内�
 
 符号表表项的意义具体参考： [.dynsym & .symtab 符号表](#.dynsym & .symtab 符号表)
 
-![image-20220926205322174](/images/image-20220926205322174.png)
+![image-20220926205322174](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926205322174.png)
 
 d_value是内存偏移， 也都在第一个段内，所以文件偏移与内存偏移一致
 
@@ -815,15 +803,15 @@ typedef struct elf32_rel {
 
 首先在动态段中定位导入表的内存偏移
 
-![image-20220927154151417](/images/image-20220927154151417.png)
+![image-20220927154151417](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220927154151417.png)
 
 在之前的内存映射关系中， 0x51d4 < 0x 00 04 20 00, 所以在第一个段中， 内存偏移等价于文件偏移
 
-![image-20220926105402111](/images/image-20220926105402111.png)
+![image-20220926105402111](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220926105402111.png)
 
 可以发现ida的静态分析可以解析出这些内容
 
-![image-20220927154925277](/images/image-20220927154925277.png)
+![image-20220927154925277](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220927154925277.png)
 
 以`__libc_int`符号为例， linker首先遍历之前解析的所有导入库的导出符号，获取同名的导出符号的地址，然后替换到模块中的内存偏移地址0x44B78 的位置
 
@@ -833,15 +821,15 @@ typedef struct elf32_rel {
 
 * 未导入符号地址， 该处的 0x9cF0并不能指向函数
 
-  ![image-20220927220935094](/images/image-20220927220935094.png)
+  ![image-20220927220935094](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220927220935094.png)
 
   该地址被如下代码引用， 代码结合起来类似于 jmp [0x44B78]  , **这就是R_ARM_JUMP_SLOT  22类型的导入地址使用方式**
 
-  ![image-20220927221104701](/images/image-20220927221104701.png)
+  ![image-20220927221104701](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220927221104701.png)
 
 * 导入符号地址
 
-  ![image-20220927225447360](/images/image-20220927225447360.png)
+  ![image-20220927225447360](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220927225447360.png)
 
 
 
@@ -886,7 +874,7 @@ typedef struct elf32_rel {
     }
 ```
 
- ![image-20220928003449811](/images/image-20220928003449811.png)
+ ![image-20220928003449811](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928003449811.png)
 
 
 
@@ -921,19 +909,19 @@ typedef struct elf32_rel {
 
 先使用代码解析重定位表
 
-![image-20220928013818474](/images/image-20220928013818474.png)
+![image-20220928013818474](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928013818474.png)
 
 首先定位第一个重定位的符号， 没有符号名， 重定位类型为 **R_ARM_RELATIVE  23**
 
-![image-20220928014639644](/images/image-20220928014639644.png)
+![image-20220928014639644](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928014639644.png)
 
 这要重定位的是全局字符串， 大多数也都是字符串需要重定位
 
-![image-20220928014809051](/images/image-20220928014809051.png)
+![image-20220928014809051](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928014809051.png)
 
 而重定位类型 **R_ARM_GLOB_DAT  21** 的使用通常作为函数指针直接使用
 
-![image-20220928015816767](/images/image-20220928015816767.png)
+![image-20220928015816767](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928015816767.png)
 
 
 
@@ -963,7 +951,7 @@ struct{
 
 下面这一套系统是用于快速索引导出表的一套结构， 理论上chain[]存储的是符号表的hash中的前31位， 所以项数nchain必须等于符号表的个数，不过由于符号表开始的一部分是导入表和重定位表的内容，为了减少空间的浪费所以chain表是从sym_tab的symoffset项开始的。
 
-![image-20220923154015011](/images/image-20220923154015011.png)
+![image-20220923154015011](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220923154015011.png)
 
 如下所示的一个哈希函数输入一个符号名，输出一个值用于计算 bucket 索引。如果给出一个符号名，经哈希函数计算得到值 x，那么 x%nbucket 是 bucket 表内的索引，bucket[x%nbucket] 给出一个符号表的索引值 y，y 同时也是 chain 表内的索引值。如果chain[y]前31位与hash值不匹配，chain[y]第32位是0则继续向下匹配，否则结束匹配， 说明这个导出表中并不含有此符号。继续遍历下一个模块的导出表. 
 
@@ -986,7 +974,7 @@ unsigned long elf_hash(const unsigned char *name)
 
 关键解析代码: 
 
-![image-20220928155758216](/images/image-20220928155758216.png)
+![image-20220928155758216](https://raw.githubusercontent.com/overturncat/picbook/master/)
 
 ```java
     public static class Elf32_hash {
@@ -1028,7 +1016,4 @@ unsigned long elf_hash(const unsigned char *name)
     }
 ```
 
-![image-20220928170431316](/images/image-20220928170431316.png)
-
-
-
+![image-20220928170431316](https://raw.githubusercontent.com/overturncat/picbook/master/image-20220928170431316.png)
