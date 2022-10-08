@@ -1,0 +1,86 @@
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.onAttach.implementation = function() {
+
+        //
+
+        return clazz.onAttach.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.getHelpResource.implementation = function() {
+
+        //
+
+        return clazz.getHelpResource.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.-wrap0.implementation = function() {
+
+        //
+
+        return clazz.-wrap0.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.getPreferenceScreenResId.implementation = function() {
+
+        //
+
+        return clazz.getPreferenceScreenResId.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.getPreferenceControllers.implementation = function() {
+
+        //
+
+        return clazz.getPreferenceControllers.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.buildPreferenceControllers.implementation = function() {
+
+        //
+
+        return clazz.buildPreferenceControllers.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.getMetricsCategory.implementation = function() {
+
+        //
+
+        return clazz.getMetricsCategory.apply(this, arguments);
+    }
+});
+    
+
+Java.perform(function() {
+    var clazz = Java.use('com.android.settings.DisplaySettings');
+    clazz.getLogTag.implementation = function() {
+
+        //
+
+        return clazz.getLogTag.apply(this, arguments);
+    }
+});
