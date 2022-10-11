@@ -1419,10 +1419,7 @@ public static void parseJmpTableList(byte[] header, int header_count, int offset
 //        type_32.printRelList(fileByteArys);
     }
 
-
-
     public static void main(String[] args){
-
         // 对ELF的修改与解析
 //        CmdUtils.runCMD("adb push ./so/ls /data/user/ls");
 //        CmdUtils.runCMD("adb shell 'chmod +x /data/user/ls'");

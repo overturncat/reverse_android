@@ -1,0 +1,15 @@
+const DalvikNativeMethod dvm_dalvik_system_DexFile[] = {
+    { "openDexFileNative",  "(Ljava/lang/String;Ljava/lang/String;I)I",
+        Dalvik_dalvik_system_DexFile_openDexFileNative },
+    { "openDexFile",        "([B)I",
+        Dalvik_dalvik_system_DexFile_openDexFile_bytearray },
+    { "closeDexFile",       "(I)V",
+        Dalvik_dalvik_system_DexFile_closeDexFile },
+    { "defineClassNative",  "(Ljava/lang/String;Ljava/lang/ClassLoader;I)Ljava/lang/Class;",
+        Dalvik_dalvik_system_DexFile_defineClassNative },
+    { "getClassNameList",   "(I)[Ljava/lang/String;",
+        Dalvik_dalvik_system_DexFile_getClassNameList },
+    { "isDexOptNeeded",     "(Ljava/lang/String;)Z",
+        Dalvik_dalvik_system_DexFile_isDexOptNeeded },
+    { NULL, NULL, NULL },
+};
